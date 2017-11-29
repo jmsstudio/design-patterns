@@ -4,6 +4,7 @@ import br.com.jmsstudio.designpatterns.strategy.imposto.Imposto;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICCC;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICMS;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoISS;
+import br.com.jmsstudio.model.Orcamento;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

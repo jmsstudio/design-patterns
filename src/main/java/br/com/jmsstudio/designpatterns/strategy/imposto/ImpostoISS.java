@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.strategy.imposto;
 
-import br.com.jmsstudio.designpatterns.strategy.Orcamento;
+import br.com.jmsstudio.model.Orcamento;
 
 public class ImpostoISS implements Imposto {
 
