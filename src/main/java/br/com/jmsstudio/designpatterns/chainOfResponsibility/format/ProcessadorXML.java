@@ -6,6 +6,10 @@ public class ProcessadorXML implements ProcessadorFormatacao {
 
     private ProcessadorFormatacao next;
 
+    public ProcessadorXML(ProcessadorFormatacao next) {
+        this.next = next;
+    }
+
     @Override
     public String processa(Formato formato, Conta conta) {
         String retorno;
@@ -21,8 +25,4 @@ public class ProcessadorXML implements ProcessadorFormatacao {
         return retorno;
     }
 
-    @Override
-    public void setNext(ProcessadorFormatacao next) {
-        this.next = next;
-    }
 }

@@ -16,14 +16,10 @@ public class FormatadorConta {
     }
 
     public String format(Conta conta) {
-        ProcessadorFormatacao p1 = new ProcessadorXML();
-        ProcessadorFormatacao p2 = new ProcessadorCSV();
-        ProcessadorFormatacao p3 = new ProcessadorPorcentagem();
         ProcessadorFormatacao p4 = new ProcessadorSemFormatacao();
-
-        p1.setNext(p2);
-        p2.setNext(p3);
-        p3.setNext(p4);
+        ProcessadorFormatacao p3 = new ProcessadorPorcentagem(p4);
+        ProcessadorFormatacao p2 = new ProcessadorCSV(p3);
+        ProcessadorFormatacao p1 = new ProcessadorXML(p2);
 
         return p1.processa(this.formato, conta);
     }

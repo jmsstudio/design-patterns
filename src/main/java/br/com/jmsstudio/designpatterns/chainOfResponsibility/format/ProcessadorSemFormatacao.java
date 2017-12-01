@@ -8,8 +8,4 @@ public class ProcessadorSemFormatacao implements ProcessadorFormatacao {
         return conta.toString();
     }
 
-    @Override
-    public void setNext(ProcessadorFormatacao next) {
-        //
-    }
 }

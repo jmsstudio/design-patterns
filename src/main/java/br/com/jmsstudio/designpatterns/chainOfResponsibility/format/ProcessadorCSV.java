@@ -6,6 +6,10 @@ public class ProcessadorCSV implements ProcessadorFormatacao {
 
     private ProcessadorFormatacao next;
 
+    public ProcessadorCSV(ProcessadorFormatacao next) {
+        this.next = next;
+    }
+
     @Override
     public String processa(Formato formato, Conta conta) {
         String retorno;
@@ -19,8 +23,4 @@ public class ProcessadorCSV implements ProcessadorFormatacao {
         return retorno;
     }
 
-    @Override
-    public void setNext(ProcessadorFormatacao next) {
-        this.next = next;
-    }
 }
