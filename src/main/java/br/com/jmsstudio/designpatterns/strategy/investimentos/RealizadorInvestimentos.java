@@ -1,5 +1,7 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
+import br.com.jmsstudio.model.Conta;
+
 public class RealizadorInvestimentos {
 
     public void realizarInvestimento(IInvestimento investimento, Conta conta) {

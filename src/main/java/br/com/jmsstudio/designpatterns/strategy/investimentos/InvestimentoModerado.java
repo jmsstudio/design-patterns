@@ -1,5 +1,7 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
+import br.com.jmsstudio.model.Conta;
+
 import java.util.Random;
 
 public class InvestimentoModerado implements IInvestimento {

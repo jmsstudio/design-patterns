@@ -1,5 +1,6 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
+import br.com.jmsstudio.model.Conta;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

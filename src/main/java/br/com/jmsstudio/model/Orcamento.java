@@ -1,6 +1,7 @@
 package br.com.jmsstudio.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Orcamento {
@@ -18,7 +19,7 @@ public class Orcamento {
     }
 
     public List<Item> getItems() {
-        return items;
+        return Collections.unmodifiableList(items);
     }
 
     public void adicionaItem(String descricao, double valor) {
