@@ -4,6 +4,8 @@ import br.com.jmsstudio.designpatterns.strategy.imposto.Imposto;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICCC;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICMS;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoISS;
+import br.com.jmsstudio.designpatterns.templateMethod.imposto.ImpostoICPP;
+import br.com.jmsstudio.designpatterns.templateMethod.imposto.ImpostoIKCV;
 import br.com.jmsstudio.model.Orcamento;
 import org.junit.Test;
 
@@ -65,4 +67,62 @@ public class CalculadoraImpostosTest {
 
         assertEquals(valor * ImpostoICCC.TAXA_IMPOSTO_3 + ImpostoICCC.VALOR_FIXO_IMPOSTO, impostoCalculado, 0.0);
     }
+
+    @Test
+    public void calculaIKCVMaior500ComItemMaior100() {
+        Imposto imposto = new ImpostoIKCV();
+        double valor = 550;
+        Orcamento orcamento = new Orcamento(valor);
+        orcamento.adicionaItem("teste", 550);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoIKCV.TAXA_MAXIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaIKCVMaior500SemItemMaior100() {
+        Imposto imposto = new ImpostoIKCV();
+        double valor = 550;
+        Orcamento orcamento = new Orcamento(valor);
+        orcamento.adicionaItem("teste", 50);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoIKCV.TAXA_MINIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaIKCVMenor500() {
+        Imposto imposto = new ImpostoIKCV();
+        double valor = 50;
+        Orcamento orcamento = new Orcamento(valor);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoIKCV.TAXA_MINIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaICPPMenor500() {
+        Imposto imposto = new ImpostoICPP();
+        double valor = 50;
+        Orcamento orcamento = new Orcamento(valor);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoICPP.TAXA_MINIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaICPPMaior500() {
+        Imposto imposto = new ImpostoICPP();
+        double valor = 550;
+        Orcamento orcamento = new Orcamento(valor);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoICPP.TAXA_MAXIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
 }
