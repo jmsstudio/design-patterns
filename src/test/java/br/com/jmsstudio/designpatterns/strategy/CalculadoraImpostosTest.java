@@ -5,6 +5,7 @@ import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICCC;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoICMS;
 import br.com.jmsstudio.designpatterns.strategy.imposto.ImpostoISS;
 import br.com.jmsstudio.designpatterns.templateMethod.imposto.ImpostoICPP;
+import br.com.jmsstudio.designpatterns.templateMethod.imposto.ImpostoIHIT;
 import br.com.jmsstudio.designpatterns.templateMethod.imposto.ImpostoIKCV;
 import br.com.jmsstudio.model.Orcamento;
 import org.junit.Test;
@@ -123,6 +124,34 @@ public class CalculadoraImpostosTest {
         double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
 
         assertEquals(valor * ImpostoICPP.TAXA_MAXIMA_IMPOSTO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaIHITComItensNomeRepetido() {
+        Imposto imposto = new ImpostoIHIT();
+        double valor = 550;
+        Orcamento orcamento = new Orcamento(valor);
+        orcamento.adicionaItem("Item 1", 100);
+        orcamento.adicionaItem("Item 1", 200);
+        orcamento.adicionaItem("Item 2", 200);
+        orcamento.adicionaItem("Item 3", 50);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoIHIT.TAXA_MAXIMA_IMPOSTO + ImpostoIHIT.PARCELA_FIXA_IMPOSTO_MAXIMO, impostoCalculado, 0.0);
+    }
+
+    @Test
+    public void calculaIHITSemItensRepetidos() {
+        Imposto imposto = new ImpostoIHIT();
+        double valor = 500;
+        Orcamento orcamento = new Orcamento(valor);
+        orcamento.adicionaItem("Item 1", 200);
+        orcamento.adicionaItem("Item 2", 300);
+
+        double impostoCalculado = new CalculadoraImpostos().calcula(imposto, orcamento);
+
+        assertEquals(valor * ImpostoIHIT.TAXA_MINIMA_IMPOSTO * orcamento.getItems().stream().count(), impostoCalculado, 0.0);
     }
 
 }
