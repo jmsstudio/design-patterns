@@ -3,15 +3,15 @@ package br.com.jmsstudio.designpatterns.strategy.imposto;
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
 import br.com.jmsstudio.model.Orcamento;
 
-public class ImpostoICMS extends Imposto {
+public class ImpostoMuitoAlto extends Imposto {
 
-    public static final double TAXA_IMPOSTO = 0.06;
+    public static final double TAXA_IMPOSTO = 0.2;
 
-    public ImpostoICMS(Imposto impostoCombinado) {
+    public ImpostoMuitoAlto(Imposto impostoCombinado) {
         super(impostoCombinado);
     }
 
-    public ImpostoICMS() {
+    public ImpostoMuitoAlto() {
         super();
     }
 

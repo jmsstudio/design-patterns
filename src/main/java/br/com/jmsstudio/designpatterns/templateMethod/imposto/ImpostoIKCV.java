@@ -1,11 +1,20 @@
 package br.com.jmsstudio.designpatterns.templateMethod.imposto;
 
+import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
 import br.com.jmsstudio.model.Item;
 import br.com.jmsstudio.model.Orcamento;
 
 public class ImpostoIKCV extends TemplateImpostoCondicional {
     public static final double TAXA_MAXIMA_IMPOSTO = 0.1;
     public static final double TAXA_MINIMA_IMPOSTO = 0.06;
+
+    public ImpostoIKCV(Imposto impostoCombinado) {
+        super(impostoCombinado);
+    }
+
+    public ImpostoIKCV() {
+        super();
+    }
 
     @Override
     public boolean deveUsarTaxaMaxima(Orcamento orcamento) {

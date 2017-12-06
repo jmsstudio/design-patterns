@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.strategy;
 
-import br.com.jmsstudio.designpatterns.strategy.imposto.Imposto;
+import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
 import br.com.jmsstudio.model.Orcamento;
 
 public class CalculadoraImpostos {
