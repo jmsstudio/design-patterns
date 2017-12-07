@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,13 +13,13 @@ public class RealizadorInvestimentosTest {
 
         double saldoInicial = 500;
 
-        Conta conta = new Conta(saldoInicial);
+        Account account = new Account(saldoInicial);
 
         IInvestimento investimento = new InvestimentoConservador();
 
-        new RealizadorInvestimentos().realizarInvestimento(investimento, conta);
+        new RealizadorInvestimentos().realizarInvestimento(investimento, account);
 
-        assertEquals(saldoInicial + saldoInicial * 0.8, conta.getSaldo(), 0.0);
+        assertEquals(saldoInicial + saldoInicial * 0.8, account.getSaldo(), 0.0);
     }
 
     @Test
@@ -27,16 +27,16 @@ public class RealizadorInvestimentosTest {
 
         double saldoInicial = 500;
 
-        Conta conta = new Conta(saldoInicial);
+        Account account = new Account(saldoInicial);
 
         IInvestimento investimento = new InvestimentoModerado();
 
-        new RealizadorInvestimentos().realizarInvestimento(investimento, conta);
+        new RealizadorInvestimentos().realizarInvestimento(investimento, account);
 
 
         double possibilidade1 = saldoInicial + saldoInicial * 0.025;
         double possibilidade2 = saldoInicial + saldoInicial * 0.8;
 
-        assertTrue(conta.getSaldo() == possibilidade1 || conta.getSaldo() == possibilidade2);
+        assertTrue(account.getSaldo() == possibilidade1 || account.getSaldo() == possibilidade2);
     }
 }

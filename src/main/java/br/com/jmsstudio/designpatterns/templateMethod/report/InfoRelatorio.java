@@ -1,20 +1,20 @@
 package br.com.jmsstudio.designpatterns.templateMethod.report;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 import java.util.List;
 
 public class InfoRelatorio {
 
     private String banco;
-    private List<Conta> contas;
+    private List<Account> accounts;
     private String telefone;
     private String endereco;
     private String email;
 
-    public InfoRelatorio(String banco, List<Conta> contas, String telefone, String endereco, String email) {
+    public InfoRelatorio(String banco, List<Account> accounts, String telefone, String endereco, String email) {
         this.banco = banco;
-        this.contas = contas;
+        this.accounts = accounts;
         this.telefone = telefone;
         this.endereco = endereco;
         this.email = email;
@@ -28,12 +28,12 @@ public class InfoRelatorio {
         this.banco = banco;
     }
 
-    public List<Conta> getContas() {
-        return contas;
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
-    public void setContas(List<Conta> contas) {
-        this.contas = contas;
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public String getTelefone() {

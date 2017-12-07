@@ -1,12 +1,12 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 import java.util.Random;
 
 public class InvestimentoArrojado implements IInvestimento {
     @Override
-    public double calcula(Conta conta) {
+    public double calcula(Account account) {
         double taxa;
 
         int baseValue = new Random().nextInt(10);
@@ -19,6 +19,6 @@ public class InvestimentoArrojado implements IInvestimento {
             taxa = 0.6;
         }
 
-        return conta.getSaldo() * taxa;
+        return account.getSaldo() * taxa;
     }
 }

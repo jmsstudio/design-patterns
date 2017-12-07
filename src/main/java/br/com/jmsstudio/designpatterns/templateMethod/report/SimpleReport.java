@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.templateMethod.report;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class SimpleReport extends ReportTemplate {
     @Override
@@ -12,12 +12,12 @@ public class SimpleReport extends ReportTemplate {
     protected String createBody(InfoRelatorio infoRelatorio) {
         StringBuilder builder = new StringBuilder("\n\n");
 
-        for (Conta conta : infoRelatorio.getContas()) {
+        for (Account account : infoRelatorio.getAccounts()) {
             builder
                     .append("Titular: ")
-                    .append(conta.getNomeTitular())
+                    .append(account.getNomeTitular())
                     .append(" | Saldo: ")
-                    .append(conta.getSaldo())
+                    .append(account.getSaldo())
                     .append("\n\n");
         }
 

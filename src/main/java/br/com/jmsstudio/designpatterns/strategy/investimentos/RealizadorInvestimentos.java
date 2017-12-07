@@ -1,13 +1,13 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class RealizadorInvestimentos {
 
-    public void realizarInvestimento(IInvestimento investimento, Conta conta) {
-        double resultado = investimento.calcula(conta);
+    public void realizarInvestimento(IInvestimento investimento, Account account) {
+        double resultado = investimento.calcula(account);
 
-        conta.deposita(resultado);
-        System.out.println("Novo saldo da conta: " + conta.getSaldo());
+        account.deposita(resultado);
+        System.out.println("Novo saldo da account: " + account.getSaldo());
     }
 }

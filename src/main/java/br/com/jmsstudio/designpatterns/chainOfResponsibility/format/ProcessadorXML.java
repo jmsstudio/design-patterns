@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.chainOfResponsibility.format;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class ProcessadorXML implements ProcessadorFormatacao {
 
@@ -11,15 +11,15 @@ public class ProcessadorXML implements ProcessadorFormatacao {
     }
 
     @Override
-    public String processa(Formato formato, Conta conta) {
+    public String processa(Formato formato, Account account) {
         String retorno;
 
         if (Formato.XML.equals(formato)) {
-            retorno = "<conta><titular>" + conta.getNomeTitular() +
-                    "</titular><saldo>" + conta.getSaldo() +
-                    "</saldo></conta>";
+            retorno = "<account><titular>" + account.getNomeTitular() +
+                    "</titular><saldo>" + account.getSaldo() +
+                    "</saldo></account>";
         } else {
-            retorno = this.next.processa(formato, conta);
+            retorno = this.next.processa(formato, account);
         }
 
         return retorno;

@@ -1,10 +1,10 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class InvestimentoConservador implements IInvestimento {
     @Override
-    public double calcula(Conta conta) {
-        return conta.getSaldo() * 0.8;
+    public double calcula(Account account) {
+        return account.getSaldo() * 0.8;
     }
 }

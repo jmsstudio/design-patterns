@@ -1,9 +1,9 @@
 package br.com.jmsstudio.designpatterns.strategy.investimentos;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public interface IInvestimento {
 
-    double calcula(Conta conta);
+    double calcula(Account account);
 
 }

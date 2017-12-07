@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.templateMethod.report;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,16 +26,16 @@ public class ComplexReport extends ReportTemplate {
     protected String createBody(InfoRelatorio infoRelatorio) {
         StringBuilder builder = new StringBuilder("\n\n");
 
-        for (Conta conta : infoRelatorio.getContas()) {
+        for (Account account : infoRelatorio.getAccounts()) {
             builder
                     .append("Titular: ")
-                    .append(conta.getNomeTitular())
+                    .append(account.getNomeTitular())
                     .append(" | Agência: ")
-                    .append(conta.getAgencia())
-                    .append(" | Conta: ")
-                    .append(conta.getConta())
+                    .append(account.getAgencia())
+                    .append(" | Account: ")
+                    .append(account.getConta())
                     .append(" | Saldo: ")
-                    .append(conta.getSaldo())
+                    .append(account.getSaldo())
                     .append("\n\n");
         }
 

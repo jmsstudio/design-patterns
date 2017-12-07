@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.chainOfResponsibility.format;
 
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class ProcessadorPorcentagem implements ProcessadorFormatacao {
 
@@ -11,13 +11,13 @@ public class ProcessadorPorcentagem implements ProcessadorFormatacao {
     }
 
     @Override
-    public String processa(Formato formato, Conta conta) {
+    public String processa(Formato formato, Account account) {
         String retorno;
 
         if (Formato.PORCENTAGEM.equals(formato)) {
-            retorno = conta.getNomeTitular() + "%" + conta.getSaldo();
+            retorno = account.getNomeTitular() + "%" + account.getSaldo();
         } else {
-            retorno = this.next.processa(formato, conta);
+            retorno = this.next.processa(formato, account);
         }
 
         return retorno;

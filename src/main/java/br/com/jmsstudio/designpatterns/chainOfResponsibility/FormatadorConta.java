@@ -1,7 +1,7 @@
 package br.com.jmsstudio.designpatterns.chainOfResponsibility;
 
 import br.com.jmsstudio.designpatterns.chainOfResponsibility.format.*;
-import br.com.jmsstudio.model.Conta;
+import br.com.jmsstudio.model.Account;
 
 public class FormatadorConta {
 
@@ -15,12 +15,12 @@ public class FormatadorConta {
         return formato;
     }
 
-    public String format(Conta conta) {
+    public String format(Account account) {
         ProcessadorFormatacao p4 = new ProcessadorSemFormatacao();
         ProcessadorFormatacao p3 = new ProcessadorPorcentagem(p4);
         ProcessadorFormatacao p2 = new ProcessadorCSV(p3);
         ProcessadorFormatacao p1 = new ProcessadorXML(p2);
 
-        return p1.processa(this.formato, conta);
+        return p1.processa(this.formato, account);
     }
 }
