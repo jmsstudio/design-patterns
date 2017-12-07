@@ -69,9 +69,9 @@ public class AbstractFilterDecoratorTest {
 
         List<Account> accounts = Arrays.asList(account1, account2, account3, account4);
 
-        AbstractFilterDecorator filter = new FilterAccountsCurrentMonth(new FilterBalanceMoreThan500(new FilterBalanceLessThan100()));
+        AbstractFilterDecorator filter = new FilterAccountsCurrentMonth(new FilterBalanceLessThan100());
 
-        Assert.assertEquals(Arrays.asList(account2), filter.filter(accounts));
+        Assert.assertEquals(Arrays.asList(account4), filter.filter(accounts));
 
     }
 }

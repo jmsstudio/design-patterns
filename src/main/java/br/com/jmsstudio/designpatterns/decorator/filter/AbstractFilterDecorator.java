@@ -3,7 +3,6 @@ package br.com.jmsstudio.designpatterns.decorator.filter;
 import br.com.jmsstudio.model.Account;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractFilterDecorator {
@@ -19,10 +18,7 @@ public abstract class AbstractFilterDecorator {
     }
 
     public List<Account> filter(List<Account> accounts) {
-        List<Account> accountsResult = doFilter(accounts);
-        accountsResult.addAll(processCombinedFilter(accounts));
-
-        return accountsResult;
+        return processCombinedFilter(doFilter(accounts));
     }
 
     protected abstract List<Account> doFilter(List<Account> accounts);
@@ -30,8 +26,12 @@ public abstract class AbstractFilterDecorator {
     protected List<Account> processCombinedFilter(List<Account> accounts) {
         List<Account> accountsResult = new ArrayList<>();
 
-        if (accounts != null && !accounts.isEmpty() && this.combinedFilter != null) {
-            accountsResult.addAll(this.combinedFilter.doFilter(accounts));
+        if (this.combinedFilter != null) {
+            if (accounts != null && !accounts.isEmpty()) {
+                accountsResult.addAll(this.combinedFilter.filter(accounts));
+            }
+        } else {
+            accountsResult = accounts;
         }
 
         return accountsResult;
