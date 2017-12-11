@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.decorator.imposto;
 
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 public abstract class Imposto {
 
@@ -14,16 +14,16 @@ public abstract class Imposto {
         this.impostoCombinado = null;
     }
 
-    protected double calculaImpostoCombinado(Orcamento orcamento) {
+    protected double calculaImpostoCombinado(Budget budget) {
         double total = 0;
 
         if (this.impostoCombinado != null) {
-            total = impostoCombinado.calcula(orcamento);
+            total = impostoCombinado.calcula(budget);
         }
 
         return total;
     }
 
-    public abstract double calcula(Orcamento orcamento);
+    public abstract double calcula(Budget budget);
 
 }

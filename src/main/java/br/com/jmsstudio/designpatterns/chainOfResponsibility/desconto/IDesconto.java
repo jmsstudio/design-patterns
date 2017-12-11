@@ -1,10 +1,10 @@
 package br.com.jmsstudio.designpatterns.chainOfResponsibility.desconto;
 
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 public interface IDesconto {
 
-    double calcularDesconto(Orcamento orcamento);
+    double calcularDesconto(Budget budget);
 
     void setProximo(IDesconto desconto);
 }

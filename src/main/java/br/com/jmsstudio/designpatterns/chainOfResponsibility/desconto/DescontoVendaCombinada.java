@@ -1,6 +1,6 @@
 package br.com.jmsstudio.designpatterns.chainOfResponsibility.desconto;
 
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +11,24 @@ public class DescontoVendaCombinada implements IDesconto {
     private IDesconto proximo;
 
     @Override
-    public double calcularDesconto(Orcamento orcamento) {
+    public double calcularDesconto(Budget budget) {
         double desconto;
 
-        if (isVendaCombinada(orcamento)) {
-            desconto = orcamento.getValor() * 0.5;
+        if (isVendaCombinada(budget)) {
+            desconto = budget.getValor() * 0.5;
         } else {
-            desconto = this.proximo.calcularDesconto(orcamento);
+            desconto = this.proximo.calcularDesconto(budget);
         }
 
         return desconto;
     }
 
-    private boolean isVendaCombinada(Orcamento orcamento) {
+    private boolean isVendaCombinada(Budget budget) {
         List<String> itensDesconto = new ArrayList<>();
         itensDesconto.add("lapis");
         itensDesconto.add("caneta");
 
-        return orcamento.getItems().stream()
+        return budget.getBudgetItems().stream()
                 .map(i -> i.getNome().toLowerCase())
                 .collect(Collectors.toList())
                 .containsAll(itensDesconto);

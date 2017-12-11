@@ -1,11 +1,11 @@
 package br.com.jmsstudio.model;
 
-public class Item {
+public class BudgetItem {
 
     private String nome;
     private double valor;
 
-    public Item(String nome, double valor) {
+    public BudgetItem(String nome, double valor) {
         this.nome = nome;
         this.valor = valor;
     }

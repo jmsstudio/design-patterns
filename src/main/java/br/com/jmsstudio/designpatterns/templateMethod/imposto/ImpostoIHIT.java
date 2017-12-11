@@ -1,8 +1,8 @@
 package br.com.jmsstudio.designpatterns.templateMethod.imposto;
 
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
-import br.com.jmsstudio.model.Item;
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.BudgetItem;
+import br.com.jmsstudio.model.Budget;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,9 +21,9 @@ public class ImpostoIHIT extends TemplateImpostoCondicional {
     }
 
     @Override
-    public boolean deveUsarTaxaMaxima(Orcamento orcamento) {
+    public boolean deveUsarTaxaMaxima(Budget budget) {
 
-        List<String> nomesItens = orcamento.getItems().stream().map(Item::getNome).collect(Collectors.toList());
+        List<String> nomesItens = budget.getBudgetItems().stream().map(BudgetItem::getNome).collect(Collectors.toList());
 
         boolean temMaisDeUmItemComMesmoNome = false;
 
@@ -37,12 +37,12 @@ public class ImpostoIHIT extends TemplateImpostoCondicional {
     }
 
     @Override
-    public double calcularTaxaMaxima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MAXIMA_IMPOSTO + PARCELA_FIXA_IMPOSTO_MAXIMO;
+    public double calcularTaxaMaxima(Budget budget) {
+        return budget.getValor() * TAXA_MAXIMA_IMPOSTO + PARCELA_FIXA_IMPOSTO_MAXIMO;
     }
 
     @Override
-    public double calcularTaxaMinima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MINIMA_IMPOSTO * orcamento.getItems().stream().count();
+    public double calcularTaxaMinima(Budget budget) {
+        return budget.getValor() * TAXA_MINIMA_IMPOSTO * budget.getBudgetItems().stream().count();
     }
 }

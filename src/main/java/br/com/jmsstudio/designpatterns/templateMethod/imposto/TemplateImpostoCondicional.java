@@ -1,7 +1,7 @@
 package br.com.jmsstudio.designpatterns.templateMethod.imposto;
 
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 public abstract class TemplateImpostoCondicional extends Imposto {
 
@@ -14,22 +14,22 @@ public abstract class TemplateImpostoCondicional extends Imposto {
     }
 
     @Override
-    public double calcula(Orcamento orcamento) {
+    public double calcula(Budget budget) {
 
         double valorCalculado;
 
-        if (deveUsarTaxaMaxima(orcamento)) {
-            valorCalculado = calcularTaxaMaxima(orcamento);
+        if (deveUsarTaxaMaxima(budget)) {
+            valorCalculado = calcularTaxaMaxima(budget);
         } else {
-            valorCalculado = calcularTaxaMinima(orcamento);
+            valorCalculado = calcularTaxaMinima(budget);
         }
 
-        return valorCalculado + calculaImpostoCombinado(orcamento);
+        return valorCalculado + calculaImpostoCombinado(budget);
     }
 
-    public abstract boolean deveUsarTaxaMaxima(Orcamento orcamento);
+    public abstract boolean deveUsarTaxaMaxima(Budget budget);
 
-    public abstract double calcularTaxaMaxima(Orcamento orcamento);
+    public abstract double calcularTaxaMaxima(Budget budget);
 
-    public abstract double calcularTaxaMinima(Orcamento orcamento);
+    public abstract double calcularTaxaMinima(Budget budget);
 }

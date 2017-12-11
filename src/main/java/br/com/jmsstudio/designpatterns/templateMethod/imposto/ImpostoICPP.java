@@ -1,7 +1,7 @@
 package br.com.jmsstudio.designpatterns.templateMethod.imposto;
 
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 public class ImpostoICPP extends TemplateImpostoCondicional {
     public static final double TAXA_MAXIMA_IMPOSTO = 0.07;
@@ -16,17 +16,17 @@ public class ImpostoICPP extends TemplateImpostoCondicional {
     }
 
     @Override
-    public boolean deveUsarTaxaMaxima(Orcamento orcamento) {
-        return orcamento.getValor() > 500;
+    public boolean deveUsarTaxaMaxima(Budget budget) {
+        return budget.getValor() > 500;
     }
 
     @Override
-    public double calcularTaxaMaxima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MAXIMA_IMPOSTO;
+    public double calcularTaxaMaxima(Budget budget) {
+        return budget.getValor() * TAXA_MAXIMA_IMPOSTO;
     }
 
     @Override
-    public double calcularTaxaMinima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MINIMA_IMPOSTO;
+    public double calcularTaxaMinima(Budget budget) {
+        return budget.getValor() * TAXA_MINIMA_IMPOSTO;
     }
 }

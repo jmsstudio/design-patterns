@@ -1,7 +1,7 @@
 package br.com.jmsstudio.designpatterns.strategy.imposto;
 
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.Budget;
 
 public class ImpostoICMS extends Imposto {
 
@@ -16,7 +16,7 @@ public class ImpostoICMS extends Imposto {
     }
 
     @Override
-    public double calcula(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_IMPOSTO + calculaImpostoCombinado(orcamento);
+    public double calcula(Budget budget) {
+        return budget.getValor() * TAXA_IMPOSTO + calculaImpostoCombinado(budget);
     }
 }

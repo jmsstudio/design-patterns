@@ -1,8 +1,8 @@
 package br.com.jmsstudio.designpatterns.templateMethod.imposto;
 
 import br.com.jmsstudio.designpatterns.decorator.imposto.Imposto;
-import br.com.jmsstudio.model.Item;
-import br.com.jmsstudio.model.Orcamento;
+import br.com.jmsstudio.model.BudgetItem;
+import br.com.jmsstudio.model.Budget;
 
 public class ImpostoIKCV extends TemplateImpostoCondicional {
     public static final double TAXA_MAXIMA_IMPOSTO = 0.1;
@@ -17,23 +17,23 @@ public class ImpostoIKCV extends TemplateImpostoCondicional {
     }
 
     @Override
-    public boolean deveUsarTaxaMaxima(Orcamento orcamento) {
-        return orcamento.getValor() > 500 && temItemComValorMaiorQue100(orcamento);
+    public boolean deveUsarTaxaMaxima(Budget budget) {
+        return budget.getValor() > 500 && temItemComValorMaiorQue100(budget);
     }
 
-    private boolean temItemComValorMaiorQue100(Orcamento orcamento) {
-        Item item = orcamento.getItems().stream().filter(i -> i.getValor() > 100).findFirst().orElse(null);
+    private boolean temItemComValorMaiorQue100(Budget budget) {
+        BudgetItem budgetItem = budget.getBudgetItems().stream().filter(i -> i.getValor() > 100).findFirst().orElse(null);
 
-        return item != null;
-    }
-
-    @Override
-    public double calcularTaxaMaxima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MAXIMA_IMPOSTO;
+        return budgetItem != null;
     }
 
     @Override
-    public double calcularTaxaMinima(Orcamento orcamento) {
-        return orcamento.getValor() * TAXA_MINIMA_IMPOSTO;
+    public double calcularTaxaMaxima(Budget budget) {
+        return budget.getValor() * TAXA_MAXIMA_IMPOSTO;
+    }
+
+    @Override
+    public double calcularTaxaMinima(Budget budget) {
+        return budget.getValor() * TAXA_MINIMA_IMPOSTO;
     }
 }
