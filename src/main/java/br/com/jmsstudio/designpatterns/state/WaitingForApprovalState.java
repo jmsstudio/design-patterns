@@ -10,7 +10,7 @@ public class WaitingForApprovalState implements BudgetState {
     @Override
     public void applyDiscount(Budget budget) {
         if (!isDiscountApplied) {
-            budget.setValor(budget.getValor() - budget.getValor() * DISCOUNT_RATE);
+            budget.setValue(budget.getValue() - budget.getValue() * DISCOUNT_RATE);
             this.isDiscountApplied = true;
         } else {
             throw new RuntimeException("The discount has already been applied");

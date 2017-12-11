@@ -9,27 +9,27 @@ import java.util.List;
 
 public class Budget {
 
-    private double valor;
+    private double value;
     private List<BudgetItem> budgetItems;
     private BudgetState currentState;
 
 
-    public Budget(double valor) {
-        this.valor = valor;
+    public Budget(double value) {
+        this.value = value;
         this.budgetItems = new ArrayList<>();
         this.currentState = new WaitingForApprovalState();
     }
 
-    public double getValor() {
-        return valor;
+    public double getValue() {
+        return value;
     }
 
-    public void setValor(double valor) {
-        if (this.valor < 0) {
+    public void setValue(double value) {
+        if (this.value < 0) {
             throw new RuntimeException("The budget value shouldn't be negative.");
         }
 
-        this.valor = valor;
+        this.value = value;
     }
 
     public BudgetState getCurrentState() {
@@ -44,8 +44,8 @@ public class Budget {
         return Collections.unmodifiableList(budgetItems);
     }
 
-    public void adicionaItem(String descricao, double valor) {
-        this.budgetItems.add(new BudgetItem(descricao, valor));
+    public void addItem(String description, double valor) {
+        this.budgetItems.add(new BudgetItem(description, valor));
     }
 
     public void applyExtraDiscount() {

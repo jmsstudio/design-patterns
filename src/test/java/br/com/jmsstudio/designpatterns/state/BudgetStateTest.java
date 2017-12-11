@@ -19,7 +19,7 @@ public class BudgetStateTest {
 
         double expectedValue = saldoInicial - saldoInicial * WaitingForApprovalState.DISCOUNT_RATE;
 
-        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertEquals(expectedValue, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(WaitingForApprovalState.class));
     }
 
@@ -34,7 +34,7 @@ public class BudgetStateTest {
 
         double expectedValue = saldoInicial - saldoInicial * ApprovedState.DISCOUNT_RATE;
 
-        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertEquals(expectedValue, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(ApprovedState.class));
     }
 
@@ -47,7 +47,7 @@ public class BudgetStateTest {
 
         budget.applyExtraDiscount();
 
-        assertEquals(saldoInicial, budget.getValor(), 0.0);
+        assertEquals(saldoInicial, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(ReprovedState.class));
     }
 
@@ -61,7 +61,7 @@ public class BudgetStateTest {
 
         budget.applyExtraDiscount();
 
-        assertEquals(saldoInicial, budget.getValor(), 0.0);
+        assertEquals(saldoInicial, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(FinishedState.class));
     }
 
@@ -75,7 +75,7 @@ public class BudgetStateTest {
 
         double expectedValue = saldoInicial - saldoInicial * WaitingForApprovalState.DISCOUNT_RATE;
 
-        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertEquals(expectedValue, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(WaitingForApprovalState.class));
 
         budget.applyExtraDiscount();
@@ -93,7 +93,7 @@ public class BudgetStateTest {
 
         double expectedValue = saldoInicial - saldoInicial * ApprovedState.DISCOUNT_RATE;
 
-        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertEquals(expectedValue, budget.getValue(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(ApprovedState.class));
 
         budget.applyExtraDiscount();

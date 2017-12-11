@@ -5,35 +5,35 @@ import java.util.Objects;
 
 public class Account {
 
-    private String nomeTitular;
-    private String agencia;
-    private String conta;
+    private String titularName;
+    private String agency;
+    private String accountNumber;
     private double saldo;
     private LocalDate startDate = LocalDate.now();
 
     public Account(double saldo) {
-        this.nomeTitular = "";
+        this.titularName = "";
         this.saldo = saldo;
     }
 
-    public Account(String nomeTitular, double saldo) {
-        this.nomeTitular = nomeTitular;
+    public Account(String titularName, double saldo) {
+        this.titularName = titularName;
         this.saldo = saldo;
     }
 
-    public Account(String nomeTitular, String agencia, String conta, double saldo) {
-        this.nomeTitular = nomeTitular;
-        this.agencia = agencia;
-        this.conta = conta;
+    public Account(String titularName, String agency, String accountNumber, double saldo) {
+        this.titularName = titularName;
+        this.agency = agency;
+        this.accountNumber = accountNumber;
         this.saldo = saldo;
     }
 
-    public String getNomeTitular() {
-        return nomeTitular;
+    public String getTitularName() {
+        return titularName;
     }
 
-    public void setNomeTitular(String nomeTitular) {
-        this.nomeTitular = nomeTitular;
+    public void setTitularName(String titularName) {
+        this.titularName = titularName;
     }
 
     public double getSaldo() {
@@ -44,20 +44,20 @@ public class Account {
         this.saldo += valor;
     }
 
-    public String getAgencia() {
-        return agencia;
+    public String getAgency() {
+        return agency;
     }
 
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
+    public void setAgency(String agency) {
+        this.agency = agency;
     }
 
-    public String getConta() {
-        return conta;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setConta(String conta) {
-        this.conta = conta;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public LocalDate getStartDate() {
@@ -74,20 +74,20 @@ public class Account {
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
         return Objects.equals(saldo, account.saldo) &&
-                Objects.equals(nomeTitular, account.nomeTitular) &&
-                Objects.equals(agencia, account.agencia) &&
-                Objects.equals(conta, account.conta);
+                Objects.equals(titularName, account.titularName) &&
+                Objects.equals(agency, account.agency) &&
+                Objects.equals(accountNumber, account.accountNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nomeTitular, agencia, conta, saldo);
+        return Objects.hash(titularName, agency, accountNumber, saldo);
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "nomeTitular='" + nomeTitular + '\'' +
+                "titularName='" + titularName + '\'' +
                 ", saldo=" + saldo +
                 '}';
     }

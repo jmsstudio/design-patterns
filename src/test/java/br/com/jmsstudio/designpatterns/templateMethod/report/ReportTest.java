@@ -17,9 +17,9 @@ public class ReportTest {
         Account account1 = new Account("Titular 1", "0120", "11520", 500);
         Account account2 = new Account("Titular 2", "4582", "44589-9", 1500);
 
-        InfoRelatorio infoRelatorio = new InfoRelatorio("Itaú", Arrays.asList(account1, account2), "(11) 3252-5566", "Rua teste, nº 123 - São Paulo, SP", "johnarmless@ja.com");
+        ReportInfo reportInfo = new ReportInfo("Itaú", Arrays.asList(account1, account2), "(11) 3252-5566", "Rua teste, nº 123 - São Paulo, SP", "johnarmless@ja.com");
 
-        String reportData = report.printReport(infoRelatorio);
+        String reportData = report.printReport(reportInfo);
 
         Assert.assertEquals("Banco: Itaú | Telefone: (11) 3252-5566\n" +
                 "\n" +
@@ -41,9 +41,9 @@ public class ReportTest {
         Account account1 = new Account("Titular 1", "0120", "11520", 500);
         Account account2 = new Account("Titular 2", "4582", "44589-9", 1500);
 
-        InfoRelatorio infoRelatorio = new InfoRelatorio("Itaú", Arrays.asList(account1, account2), "(11) 3252-5566", "Rua teste, nº 123 - São Paulo, SP", "johnarmless@ja.com");
+        ReportInfo reportInfo = new ReportInfo("Itaú", Arrays.asList(account1, account2), "(11) 3252-5566", "Rua teste, nº 123 - São Paulo, SP", "johnarmless@ja.com");
 
-        String reportData = report.printReport(infoRelatorio);
+        String reportData = report.printReport(reportInfo);
 
         Assert.assertEquals("Banco: Itaú | Endereço: Rua teste, nº 123 - São Paulo, SP  | Telefone: (11) 3252-5566\n" +
                 "\n" +

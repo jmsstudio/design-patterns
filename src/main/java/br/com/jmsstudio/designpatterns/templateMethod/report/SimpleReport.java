@@ -4,18 +4,18 @@ import br.com.jmsstudio.model.Account;
 
 public class SimpleReport extends ReportTemplate {
     @Override
-    protected String createHeader(InfoRelatorio infoRelatorio) {
-        return getCommonData(infoRelatorio);
+    protected String createHeader(ReportInfo reportInfo) {
+        return getCommonData(reportInfo);
     }
 
     @Override
-    protected String createBody(InfoRelatorio infoRelatorio) {
+    protected String createBody(ReportInfo reportInfo) {
         StringBuilder builder = new StringBuilder("\n\n");
 
-        for (Account account : infoRelatorio.getAccounts()) {
+        for (Account account : reportInfo.getAccounts()) {
             builder
                     .append("Titular: ")
-                    .append(account.getNomeTitular())
+                    .append(account.getTitularName())
                     .append(" | Saldo: ")
                     .append(account.getSaldo())
                     .append("\n\n");
@@ -25,17 +25,17 @@ public class SimpleReport extends ReportTemplate {
     }
 
     @Override
-    protected String createFooter(InfoRelatorio infoRelatorio) {
-        return getCommonData(infoRelatorio);
+    protected String createFooter(ReportInfo reportInfo) {
+        return getCommonData(reportInfo);
     }
 
-    private String getCommonData(InfoRelatorio infoRelatorio) {
+    private String getCommonData(ReportInfo reportInfo) {
         StringBuilder builder = new StringBuilder();
         builder
                 .append("Banco: ")
-                .append(infoRelatorio.getBanco())
+                .append(reportInfo.getBanco())
                 .append(" | Telefone: ")
-                .append(infoRelatorio.getTelefone());
+                .append(reportInfo.getTelefone());
 
         return builder.toString();
     }

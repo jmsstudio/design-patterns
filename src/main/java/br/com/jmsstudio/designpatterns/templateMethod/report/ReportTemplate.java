@@ -2,22 +2,22 @@ package br.com.jmsstudio.designpatterns.templateMethod.report;
 
 public abstract class ReportTemplate {
 
-    public String printReport(InfoRelatorio infoRelatorio) {
+    public String printReport(ReportInfo reportInfo) {
         StringBuilder builder = new StringBuilder();
 
-        builder.append(createHeader(infoRelatorio));
+        builder.append(createHeader(reportInfo));
         builder.append("\n");
-        builder.append(createBody(infoRelatorio));
+        builder.append(createBody(reportInfo));
         builder.append("\n");
-        builder.append(createFooter(infoRelatorio));
+        builder.append(createFooter(reportInfo));
 
         return builder.toString();
     }
 
-    protected abstract String createHeader(InfoRelatorio infoRelatorio);
+    protected abstract String createHeader(ReportInfo reportInfo);
 
-    protected abstract String createBody(InfoRelatorio infoRelatorio);
+    protected abstract String createBody(ReportInfo reportInfo);
 
-    protected abstract String createFooter(InfoRelatorio infoRelatorio);
+    protected abstract String createFooter(ReportInfo reportInfo);
 
 }

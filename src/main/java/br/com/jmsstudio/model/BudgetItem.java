@@ -2,27 +2,27 @@ package br.com.jmsstudio.model;
 
 public class BudgetItem {
 
-    private String nome;
-    private double valor;
+    private String name;
+    private double value;
 
-    public BudgetItem(String nome, double valor) {
-        this.nome = nome;
-        this.valor = valor;
+    public BudgetItem(String name, double value) {
+        this.name = name;
+        this.value = value;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValue() {
+        return value;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setValue(double value) {
+        this.value = value;
     }
 }
