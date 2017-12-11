@@ -64,4 +64,38 @@ public class BudgetStateTest {
         assertEquals(saldoInicial, budget.getValor(), 0.0);
         assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(FinishedState.class));
     }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldApplyDiscountForBudgetWaitingForApprovalOnlyOnce() {
+        final double saldoInicial = 500;
+
+        Budget budget = new Budget(saldoInicial);
+
+        budget.applyExtraDiscount();
+
+        double expectedValue = saldoInicial - saldoInicial * WaitingForApprovalState.DISCOUNT_RATE;
+
+        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(WaitingForApprovalState.class));
+
+        budget.applyExtraDiscount();
+
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldApplyDiscountForApprovedBudgetOnlyOnce() {
+        final double saldoInicial = 500;
+
+        Budget budget = new Budget(saldoInicial);
+        budget.approve();
+
+        budget.applyExtraDiscount();
+
+        double expectedValue = saldoInicial - saldoInicial * ApprovedState.DISCOUNT_RATE;
+
+        assertEquals(expectedValue, budget.getValor(), 0.0);
+        assertThat(budget.getCurrentState(), CoreMatchers.instanceOf(ApprovedState.class));
+
+        budget.applyExtraDiscount();
+    }
 }

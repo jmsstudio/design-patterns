@@ -4,10 +4,17 @@ import br.com.jmsstudio.model.Budget;
 
 public class ApprovedState implements BudgetState {
     public static final double DISCOUNT_RATE = 0.02;
+    private boolean isDiscountApplied = false;
 
     @Override
     public void applyDiscount(Budget budget) {
-        budget.setValor(budget.getValor() - budget.getValor() * DISCOUNT_RATE);
+        if (!isDiscountApplied) {
+            budget.setValor(budget.getValor() - budget.getValor() * DISCOUNT_RATE);
+            this.isDiscountApplied = true;
+        } else {
+            throw new RuntimeException("The discount has already been applied");
+        }
+
     }
 
     @Override
