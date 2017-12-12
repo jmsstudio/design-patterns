@@ -7,7 +7,7 @@ public class RealizadorInvestimentos {
     public void realizarInvestimento(IInvestimento investimento, Account account) {
         double resultado = investimento.calcula(account);
 
-        account.deposita(resultado);
-        System.out.println("Novo saldo da account: " + account.getSaldo());
+        account.deposit(resultado);
+        System.out.println("Novo saldo da account: " + account.getBalance());
     }
 }

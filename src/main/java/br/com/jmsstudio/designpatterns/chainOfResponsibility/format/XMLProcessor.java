@@ -16,7 +16,7 @@ public class XMLProcessor implements FormatterProcessor {
 
         if (Format.XML.equals(format)) {
             retorno = "<account><titular>" + account.getTitularName() +
-                    "</titular><saldo>" + account.getSaldo() +
+                    "</titular><saldo>" + account.getBalance() +
                     "</saldo></account>";
         } else {
             retorno = this.next.processa(format, account);

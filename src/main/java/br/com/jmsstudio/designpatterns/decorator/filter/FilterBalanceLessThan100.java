@@ -21,7 +21,7 @@ public class FilterBalanceLessThan100 extends AbstractFilterDecorator {
         List<Account> accountsResult = Collections.emptyList();
 
         if (accounts != null) {
-            accountsResult = accounts.stream().filter(a -> a.getSaldo() < 100).collect(Collectors.toList());
+            accountsResult = accounts.stream().filter(a -> a.getBalance() < 100).collect(Collectors.toList());
         }
 
         return accountsResult;

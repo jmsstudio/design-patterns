@@ -1,5 +1,9 @@
 package br.com.jmsstudio.model;
 
+import br.com.jmsstudio.designpatterns.state.account.AccountState;
+import br.com.jmsstudio.designpatterns.state.account.NegativeState;
+import br.com.jmsstudio.designpatterns.state.account.PositiveState;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,24 +12,36 @@ public class Account {
     private String titularName;
     private String agency;
     private String accountNumber;
-    private double saldo;
+    private double balance;
     private LocalDate startDate = LocalDate.now();
+    private AccountState currentState;
 
-    public Account(double saldo) {
+    public Account(double balance) {
         this.titularName = "";
-        this.saldo = saldo;
+        this.balance = balance;
+        this.initState();
     }
 
-    public Account(String titularName, double saldo) {
+    public Account(String titularName, double balance) {
         this.titularName = titularName;
-        this.saldo = saldo;
+        this.balance = balance;
+        this.initState();
     }
 
-    public Account(String titularName, String agency, String accountNumber, double saldo) {
+    public Account(String titularName, String agency, String accountNumber, double balance) {
         this.titularName = titularName;
         this.agency = agency;
         this.accountNumber = accountNumber;
-        this.saldo = saldo;
+        this.balance = balance;
+        this.initState();
+    }
+
+    private void initState() {
+        if (this.balance >= 0) {
+            this.currentState = new PositiveState();
+        } else {
+            this.currentState = new NegativeState();
+        }
     }
 
     public String getTitularName() {
@@ -36,12 +52,28 @@ public class Account {
         this.titularName = titularName;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public double getBalance() {
+        return balance;
     }
 
-    public void deposita(double valor) {
-        this.saldo += valor;
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public AccountState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(AccountState currentState) {
+        this.currentState = currentState;
+    }
+
+    public void deposit(double value) {
+        this.currentState.processDeposit(this, value);
+    }
+
+    public void withdraw(double value) {
+        this.currentState.processWithdraw(this, value);
     }
 
     public String getAgency() {
@@ -73,7 +105,7 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(saldo, account.saldo) &&
+        return Objects.equals(balance, account.balance) &&
                 Objects.equals(titularName, account.titularName) &&
                 Objects.equals(agency, account.agency) &&
                 Objects.equals(accountNumber, account.accountNumber);
@@ -81,14 +113,14 @@ public class Account {
 
     @Override
     public int hashCode() {
-        return Objects.hash(titularName, agency, accountNumber, saldo);
+        return Objects.hash(titularName, agency, accountNumber, balance);
     }
 
     @Override
     public String toString() {
         return "Account{" +
                 "titularName='" + titularName + '\'' +
-                ", saldo=" + saldo +
+                ", balance=" + balance +
                 '}';
     }
 }

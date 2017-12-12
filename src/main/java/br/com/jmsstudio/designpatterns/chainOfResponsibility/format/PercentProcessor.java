@@ -15,7 +15,7 @@ public class PercentProcessor implements FormatterProcessor {
         String retorno;
 
         if (Format.PORCENTAGEM.equals(format)) {
-            retorno = account.getTitularName() + "%" + account.getSaldo();
+            retorno = account.getTitularName() + "%" + account.getBalance();
         } else {
             retorno = this.next.processa(format, account);
         }

@@ -19,6 +19,6 @@ public class InvestimentoArrojado implements IInvestimento {
             taxa = 0.6;
         }
 
-        return account.getSaldo() * taxa;
+        return account.getBalance() * taxa;
     }
 }

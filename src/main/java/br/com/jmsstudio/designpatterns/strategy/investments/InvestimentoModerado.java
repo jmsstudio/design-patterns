@@ -16,6 +16,6 @@ public class InvestimentoModerado implements IInvestimento {
             taxa = 0.8;
         }
 
-        return account.getSaldo() * taxa;
+        return account.getBalance() * taxa;
     }
 }

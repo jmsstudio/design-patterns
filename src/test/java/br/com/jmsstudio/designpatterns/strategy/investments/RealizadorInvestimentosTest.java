@@ -1,5 +1,6 @@
 package br.com.jmsstudio.designpatterns.strategy.investments;
 
+import br.com.jmsstudio.designpatterns.state.account.PositiveState;
 import br.com.jmsstudio.model.Account;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class RealizadorInvestimentosTest {
 
         new RealizadorInvestimentos().realizarInvestimento(investimento, account);
 
-        assertEquals(saldoInicial + saldoInicial * 0.8, account.getSaldo(), 0.0);
+        assertEquals(saldoInicial + ((saldoInicial * 0.8) - (saldoInicial * 0.8) * PositiveState.DEPOSIT_RATE), account.getBalance(), 0.0);
     }
 
     @Test
@@ -34,9 +35,9 @@ public class RealizadorInvestimentosTest {
         new RealizadorInvestimentos().realizarInvestimento(investimento, account);
 
 
-        double possibilidade1 = saldoInicial + saldoInicial * 0.025;
-        double possibilidade2 = saldoInicial + saldoInicial * 0.8;
+        double possibilidade1 = saldoInicial + (saldoInicial * 0.025 - saldoInicial * 0.025 * PositiveState.DEPOSIT_RATE);
+        double possibilidade2 = saldoInicial + (saldoInicial * 0.8 - saldoInicial * 0.8 * PositiveState.DEPOSIT_RATE);
 
-        assertTrue(account.getSaldo() == possibilidade1 || account.getSaldo() == possibilidade2);
+        assertTrue(account.getBalance() == possibilidade1 || account.getBalance() == possibilidade2);
     }
 }

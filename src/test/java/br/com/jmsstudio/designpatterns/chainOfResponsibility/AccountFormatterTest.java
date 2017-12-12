@@ -15,7 +15,7 @@ public class AccountFormatterTest {
         AccountFormatter formatter = new AccountFormatter(Format.XML);
 
         String expectedValue = "<account><titular>" + account.getTitularName() +
-                "</titular><saldo>" + account.getSaldo() +
+                "</titular><saldo>" + account.getBalance() +
                 "</saldo></account>";
 
         assertEquals(expectedValue, formatter.format(account));
@@ -27,7 +27,7 @@ public class AccountFormatterTest {
 
         AccountFormatter formatter = new AccountFormatter(Format.CSV);
 
-        String expectedValue = account.getTitularName() + "," + account.getSaldo();
+        String expectedValue = account.getTitularName() + "," + account.getBalance();
 
         assertEquals(expectedValue, formatter.format(account));
     }
@@ -38,7 +38,7 @@ public class AccountFormatterTest {
 
         AccountFormatter formatter = new AccountFormatter(Format.PORCENTAGEM);
 
-        String expectedValue = account.getTitularName() + "%" + account.getSaldo();
+        String expectedValue = account.getTitularName() + "%" + account.getBalance();
 
         assertEquals(expectedValue, formatter.format(account));
     }

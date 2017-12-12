@@ -17,7 +17,7 @@ public class SimpleReport extends ReportTemplate {
                     .append("Titular: ")
                     .append(account.getTitularName())
                     .append(" | Saldo: ")
-                    .append(account.getSaldo())
+                    .append(account.getBalance())
                     .append("\n\n");
         }
 

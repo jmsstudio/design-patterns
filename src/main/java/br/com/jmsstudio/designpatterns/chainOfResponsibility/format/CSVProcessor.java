@@ -15,7 +15,7 @@ public class CSVProcessor implements FormatterProcessor {
         String retorno;
 
         if (Format.CSV.equals(format)) {
-            retorno = account.getTitularName() + "," + account.getSaldo();
+            retorno = account.getTitularName() + "," + account.getBalance();
         } else {
             retorno = this.next.processa(format, account);
         }

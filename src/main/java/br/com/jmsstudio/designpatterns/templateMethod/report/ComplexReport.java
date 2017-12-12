@@ -35,7 +35,7 @@ public class ComplexReport extends ReportTemplate {
                     .append(" | Account: ")
                     .append(account.getAccountNumber())
                     .append(" | Saldo: ")
-                    .append(account.getSaldo())
+                    .append(account.getBalance())
                     .append("\n\n");
         }
 
