@@ -1,5 +1,8 @@
 package br.com.jmsstudio.designpatterns.builder;
 
+import br.com.jmsstudio.designpatterns.observer.EmailSender;
+import br.com.jmsstudio.designpatterns.observer.ReportGenerator;
+import br.com.jmsstudio.designpatterns.observer.SmsNotifier;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -45,6 +48,9 @@ public class TaxInvoiceBuilderTest {
                 .withItem(item1)
                 .withItem(item2)
                 .withObservations("")
+                .withObserver(new EmailSender())
+                .withObserver(new SmsNotifier())
+                .withObserver(new ReportGenerator())
                 .build();
 
         double calculatedTaxes = item1.getValue() * 0.05 + item2.getValue() * 0.05;

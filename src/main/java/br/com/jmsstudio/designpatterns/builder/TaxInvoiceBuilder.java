@@ -1,8 +1,12 @@
 package br.com.jmsstudio.designpatterns.builder;
 
+import br.com.jmsstudio.designpatterns.observer.TaxInvoiceObserver;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TaxInvoiceBuilder {
 
@@ -13,6 +17,7 @@ public class TaxInvoiceBuilder {
     private LocalDate emissionDate;
     private String observations;
     private List<TaxInvoiceItem> items = new ArrayList<>();
+    private Set<TaxInvoiceObserver> observers = new HashSet<>();
 
     public TaxInvoiceBuilder() {
         this.companyName = "";
@@ -54,8 +59,14 @@ public class TaxInvoiceBuilder {
         return this;
     }
 
+    public TaxInvoiceBuilder withObserver(TaxInvoiceObserver observer) {
+        this.observers.add(observer);
+        return this;
+    }
+
     public TaxInvoice build() {
-        return new TaxInvoice(this.companyName, this.cnpj, this.bruteValue, this.taxValue, this.emissionDate, this.observations, this.items);
+        return new TaxInvoice(this.companyName, this.cnpj, this.bruteValue, this.taxValue, this.emissionDate,
+                this.observations, this.items, this.observers);
     }
 
 }
