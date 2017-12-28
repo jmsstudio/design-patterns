@@ -1,21 +1,33 @@
 package br.com.jmsstudio.designpatterns.flyweight;
 
 public enum MusicalNotes {
-    DO(new Do()),
-    RE(new Re()),
-    MI(new Mi()),
-    FA(new Fa()),
-    SOL(new Sol()),
-    LA(new La()),
-    SI(new Si());
+    DO(Do.class),
+    RE(Re.class),
+    MI(Mi.class),
+    FA(Fa.class),
+    SOL(Sol.class),
+    LA(La.class),
+    SI(Si.class);
 
     private MusicalNote musicalNote;
+    private Class<? extends MusicalNote> musicalNoteClass;
 
-    MusicalNotes(MusicalNote musicalNote) {
-        this.musicalNote = musicalNote;
+    MusicalNotes(Class<? extends MusicalNote> musicalNoteClass) {
+        this.musicalNoteClass = musicalNoteClass;
+    }
+
+    private void instantiateMusicalNote() {
+        if (this.musicalNote == null) {
+            try {
+                this.musicalNote = musicalNoteClass.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public MusicalNote getMusicalNote() {
-        return musicalNote;
+        instantiateMusicalNote();
+        return this.musicalNote;
     }
 }
