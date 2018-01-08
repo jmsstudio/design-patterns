@@ -1,5 +1,7 @@
 package br.com.jmsstudio.designpatterns.interpreter;
 
+import br.com.jmsstudio.designpatterns.visitor.FormatterVisitor;
+
 public class NumericValue implements Expression {
 
     private double number;
@@ -15,5 +17,10 @@ public class NumericValue implements Expression {
     @Override
     public Number evaluate() {
         return number;
+    }
+
+    @Override
+    public void accept(FormatterVisitor visitor) {
+        visitor.visitNumericValue(this);
     }
 }
